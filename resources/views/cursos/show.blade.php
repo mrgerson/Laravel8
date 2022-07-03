@@ -5,6 +5,6 @@
 
 
 @section('content')
-<h1>en esta pagina puedes ver un curso</h1>
+<h1>Bienvenido al curso javascript {{$curso}}</h1>
 
 @endsection
