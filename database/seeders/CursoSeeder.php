@@ -5,18 +5,17 @@ namespace Database\Seeders;
 use App\Models\Curso;
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class CursoSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create();
+        //decirle a la clase CursoSeeder que llene con el factory con el mismo nombre
+        //con 50 elementos
         Curso::factory(50)->create();
-        //$this->call(CursoSeeder::class);
-
     }
 }
