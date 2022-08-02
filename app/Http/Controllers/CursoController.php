@@ -32,12 +32,17 @@ class CursoController extends Controller
 
         /* agregando Request de validación StoreCurso para personalizar las validaciones en un archivo independiente */
 
-        $curso = new Curso();
+
+        /* guardando datos como se hace habitualmente*/
+
+       /*  $curso = new Curso();
         $curso->name = $request->name;
         $curso->descripcion = $request->descripcion;
         $curso->categoria = $request->categoria;
+        $curso->save(); */
 
-        $curso->save();
+       /* guardando datos con asignación masiva */
+       $curso = Curso::create($request->all());
 
         return redirect()->route('cursos.show', $curso);
     }
@@ -57,10 +62,14 @@ class CursoController extends Controller
             'categoria' => 'required',
         ]);
 
-        $curso->name = $request->name;
+        /* guardando datos como se hace habitualmente */
+       /*  $curso->name = $request->name;
         $curso->descripcion = $request->descripcion;
         $curso->categoria = $request->categoria;
-        $curso->save();
+        $curso->save(); */
+
+        /* actualizando un curso con asignación masiva */
+        $curso->update($request->all());
 
         return redirect()->route('cursos.show', $curso);
     }
