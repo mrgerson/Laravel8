@@ -43,6 +43,7 @@
             <small>*{{ $message }}</small>
             <br>
         @enderror
+        <input type="hidden" name="slug" value="slug">
         <br>
         <button type="submit">actualizar formulario</button>
     </form>

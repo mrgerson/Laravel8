@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCurso;
 use App\Models\Curso;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreCurso;
 use PhpParser\Node\Expr\BinaryOp\Concat;
 
 class CursoController extends Controller
@@ -41,6 +42,11 @@ class CursoController extends Controller
         $curso->categoria = $request->categoria;
         $curso->save(); */
 
+        //agregar el slug de la ruta amigable dinamicamente
+        $request->merge([
+            'slug' => Str::slug($request->name),
+        ]);
+
         /* guardando datos con asignación masiva */
         $curso = Curso::create($request->all());
 
@@ -67,6 +73,11 @@ class CursoController extends Controller
         $curso->descripcion = $request->descripcion;
         $curso->categoria = $request->categoria;
         $curso->save(); */
+
+         //agregar el slug de la ruta amigable dinamicamente
+        $request->merge([
+            'slug' => Str::slug($request->name),
+        ]);
 
         /* actualizando un curso con asignación masiva */
         $curso->update($request->all());
