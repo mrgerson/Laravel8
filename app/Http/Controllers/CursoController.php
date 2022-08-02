@@ -2,12 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCurso;
 use App\Models\Curso;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\BinaryOp\Concat;
 
 class CursoController extends Controller
 {
+
+    /* notas
+    para agregar request de validación en un archivo independiente
+    App/http/Request
+    php artisan make:request StoreCurso
+
+
+    */
     public function index()
     {
         $cursos = Curso::orderBy('id', 'desc')->paginate();
@@ -18,13 +27,10 @@ class CursoController extends Controller
     {
         return view('cursos.create');
     }
-    public function store(Request $request)
+    public function store(StoreCurso $request)
     {
-        $request->validate([
-            'name' => 'required|max:10',
-            'descripcion' => 'required|min:10',
-            'categoria' => 'required',
-        ]);
+
+        /* agregando Request de validación StoreCurso para personalizar las validaciones en un archivo independiente */
 
         $curso = new Curso();
         $curso->name = $request->name;
@@ -57,6 +63,5 @@ class CursoController extends Controller
         $curso->save();
 
         return redirect()->route('cursos.show', $curso);
-
     }
 }
