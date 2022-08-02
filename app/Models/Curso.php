@@ -17,4 +17,10 @@ class Curso extends Model
    /* con el guarded hace algo parecido al fillable, la diferencia es que acá solo se ingresa el valor que quiero que ignore de la base
    de datos y los demás campos los va a insertar en la base de datos*/
    protected $guarded = [];
+
+   //para que retorne rutas amigables
+   public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
