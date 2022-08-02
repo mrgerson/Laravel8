@@ -1,7 +1,9 @@
 <?php
 
+use App\Mail\ContactosMailable;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CursoController;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,13 @@ Route::resource('cursos', CursoController::class);
 //ruta para cuando solo queremos mostrar una ruta estatica
 Route::view('nosotros', 'nosotros')->name('nosotros');
 
+Route::get('contactanos', function () {
 
+    $correo = new ContactosMailable;
+
+    Mail::to('gedacaba@gmail.com')->send($correo);
+
+    return "Mensaje enviado";
+});
 
 
