@@ -14,6 +14,6 @@
         @endforeach
     </ul>
 
-   {{--  {{ $cursos }} --}}
+    {{ $cursos }}
 
 @endsection

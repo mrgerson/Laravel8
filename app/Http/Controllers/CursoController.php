@@ -35,14 +35,14 @@ class CursoController extends Controller
 
         /* guardando datos como se hace habitualmente*/
 
-       /*  $curso = new Curso();
+        /*  $curso = new Curso();
         $curso->name = $request->name;
         $curso->descripcion = $request->descripcion;
         $curso->categoria = $request->categoria;
         $curso->save(); */
 
-       /* guardando datos con asignación masiva */
-       $curso = Curso::create($request->all());
+        /* guardando datos con asignación masiva */
+        $curso = Curso::create($request->all());
 
         return redirect()->route('cursos.show', $curso);
     }
@@ -63,7 +63,7 @@ class CursoController extends Controller
         ]);
 
         /* guardando datos como se hace habitualmente */
-       /*  $curso->name = $request->name;
+        /*  $curso->name = $request->name;
         $curso->descripcion = $request->descripcion;
         $curso->categoria = $request->categoria;
         $curso->save(); */
@@ -72,5 +72,11 @@ class CursoController extends Controller
         $curso->update($request->all());
 
         return redirect()->route('cursos.show', $curso);
+    }
+
+    public function destroy(Curso $curso)
+    {
+        $curso->delete();
+        return redirect()->route('cursos.index');
     }
 }
