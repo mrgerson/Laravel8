@@ -38,7 +38,6 @@
             <input type="text" name="categoria" value="{{old('categoria')}}">
         </label>
 
-       {{--  minuto 20:34 --}}
         @error('categoria')
             <br>
             <small>*{{ $message }}</small>
