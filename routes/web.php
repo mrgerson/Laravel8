@@ -13,7 +13,7 @@ use App\Http\Controllers\CursoController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [CursoController::class, 'index']);
+Route::get('/', [CursoController::class, 'index'])->name('home');
 
 //rutas de la manera convencional
 /* Route::get('cursos', [CursoController::class, 'index'])->name('cursos.index');
@@ -27,6 +27,9 @@ Route::delete('cursos/{curso}',  [CursoController::class, 'destroy'])->name('cur
 
 //rutas de tipo resourses
 Route::resource('cursos', CursoController::class);
+
+//ruta para cuando solo queremos mostrar una ruta estatica
+Route::view('nosotros', 'nosotros')->name('nosotros');
 
 
 
