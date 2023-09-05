@@ -2,6 +2,7 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\ContactanosController;
 
@@ -36,5 +37,9 @@ Route::view('nosotros', 'nosotros')->name('nosotros');
 
 Route::get('contactanos', [ContactanosController::class, 'index'])->name('contactanos.index');
 Route::post('contactanos', [ContactanosController::class, 'store'])->name('contactanos.store');
+
+//para usuarios
+Route::get('usuarios', [UserController::class, 'index'])->name('user.index');
+
 
 

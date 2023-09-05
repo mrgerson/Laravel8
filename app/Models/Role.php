@@ -14,7 +14,7 @@ class Role extends Model
     //relacion de muchos a muchos con usuarios
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withTimestamps();
     }
 
     //relacion de muchos a muchos con permisos

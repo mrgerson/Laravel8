@@ -9,6 +9,7 @@ use App\Models\Video;
 use App\Models\Comment;
 
 use App\Models\Profile;
+use App\Models\RoleUser;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -80,8 +81,14 @@ class User extends Authenticatable
 
     //relación de muchos a muchos con roles
     public function roles(){
-        return $this->belongsToMany(Role::class);
+        return $this->belongsToMany(Role::class)->withTimestamps();
     }
+
+    //relacion usuarios y roles personalizada
+    public function rolesUser(){
+        return $this->belongsToMany(Role::class)->using(RoleUser::class);
+    }
+
 
     //relación de uno a muchos con comment
     public function comments(){
